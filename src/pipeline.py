@@ -190,6 +190,32 @@ def save_predictions(questions, answers, contexts, ground_truths, path: str = PR
     print(f"  ✓ Predictions checkpoint → {path}", flush=True)
 
 
+def regenerate_answers(path: str = PREDICTIONS_PATH):
+    """Sinh lại câu trả lời từ context đã lưu trong checkpoint.
+
+    Dùng khi lần chạy trước bị 429 giữa đường và rơi vào fallback `answer = contexts[0]`
+    (fallback này làm faithfulness bị thổi lên giả vì answer trùng context).
+    Không phải index + rerank lại.
+    """
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+
+    questions, contexts = data["questions"], data["contexts"]
+    print(f"[Regen] Sinh lại {len(questions)} câu trả lời ({provider()})...", flush=True)
+
+    answers, fallbacks = [], 0
+    for i, (q, ctx) in enumerate(zip(questions, contexts)):
+        answer = answer_from_context(q, ctx)
+        if ctx and answer.strip() == ctx[0].strip():
+            fallbacks += 1
+        answers.append(answer)
+        print(f"  [{i+1}/{len(questions)}] {'FALLBACK' if ctx and answer.strip() == ctx[0].strip() else 'ok'}", flush=True)
+
+    print(f"  ✓ Xong — {fallbacks}/{len(questions)} câu vẫn là fallback", flush=True)
+    save_predictions(questions, answers, contexts, data["ground_truths"], path=path)
+    return fallbacks
+
+
 def evaluate_from_predictions(path: str = PREDICTIONS_PATH):
     """Chỉ chạy lại RAGAS từ checkpoint (không retrieval/rerank/generate lại)."""
     with open(path, encoding="utf-8") as f:
@@ -215,7 +241,10 @@ def evaluate_from_predictions(path: str = PREDICTIONS_PATH):
 
 if __name__ == "__main__":
     start = time.time()
-    if "--eval-only" in sys.argv:
+    if "--regen" in sys.argv:
+        regenerate_answers()
+        evaluate_from_predictions()
+    elif "--eval-only" in sys.argv:
         evaluate_from_predictions()
     else:
         search, reranker = build_pipeline()

@@ -13,14 +13,17 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "") or os.getenv("GEMINI_API_KEY", 
 
 OPENAI_CHAT_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini")
 # gemini-3.5-flash-lite: free tier có quota/ngày cao hơn hẳn gemini-3.6-flash (20 req/ngày)
-GEMINI_CHAT_MODEL = os.getenv("GEMINI_CHAT_MODEL", "gemini-3.5-flash-lite")
+GEMINI_CHAT_MODEL = os.getenv("GEMINI_CHAT_MODEL", "gemini-3.5-flash")
 # Judge của RAGAS dùng model KHÁC generator, vì:
 #   1) quota free tier tính riêng từng model (500 req/ngày/model) → chia tải
 #   2) tránh self-preference bias: LLM có xu hướng cho điểm cao cho output của chính nó
 GEMINI_JUDGE_MODEL = os.getenv("GEMINI_JUDGE_MODEL", "gemini-3.1-flash-lite")
 GEMINI_EMBED_MODEL = os.getenv("GEMINI_EMBED_MODEL", "models/gemini-embedding-001")
 
-LLM_MAX_RETRIES = int(os.getenv("LLM_MAX_RETRIES", "3"))
+LLM_MAX_RETRIES = int(os.getenv("LLM_MAX_RETRIES", "5"))
+# Số LLM request tối đa trong 60s (rate limiter cửa sổ trượt trong src/llm.py).
+# Free tier Gemini = 15 req/phút -> đặt 14 cho an toàn. Đặt 0 để tắt (tier trả phí).
+LLM_RPM = int(os.getenv("LLM_RPM", "14"))
 # Số worker RAGAS gọi LLM song song — giữ thấp để tránh 429 trên free tier.
 RAGAS_MAX_WORKERS = int(os.getenv("RAGAS_MAX_WORKERS", "2"))
 

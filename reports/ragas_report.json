@@ -1,91 +1,91 @@
 {
   "aggregate": {
-    "faithfulness": 0.9928571428571429,
-    "answer_relevancy": 0.7927799295019868,
+    "faithfulness": 0.8595238095238097,
+    "answer_relevancy": 0.7610539023780855,
     "context_precision": 0.7666666665970834,
     "context_recall": 0.8416666666666668
   },
   "num_questions": 20,
   "failures": [
     {
-      "question": "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
-      "avg_score": 0.5188,
-      "worst_metric": "context_precision",
-      "score": 0.0,
-      "metrics": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.7418,
-        "context_precision": 0.0,
-        "context_recall": 0.3333
-      },
-      "diagnosis": "Too many irrelevant chunks - context bị nhiễu, chunk đúng xếp hạng thấp",
-      "suggested_fix": "Thêm/siết reranking (cross-encoder), metadata filter theo version, giảm chunk size",
-      "answer": "Đoạn văn nằm trong tài liệu mua sắm, đề cập đến quy trình và quy định mua sắm thiết bị CNTT và các trường hợp khẩn cấp.\n\nMua sắm thiết bị CNTT (laptop, server, phần mềm) cần có xác nhận của phòng CNTT về cấu hình kỹ thuật trước khi đề xuất. Đơn hàng khẩn cấp có thể bỏ qua yêu cầu 3 báo giá nhưng phả",
-      "ground_truth": "Laptop 30 triệu nằm trong khoảng 5-50 triệu nên cần Giám đốc phòng ban (Director) phê duyệt. Ngoài ra, mua sắm thiết bị CNTT cần có xác nhận cấu hình kỹ thuật từ phòng CNTT trước khi đề xuất. Cần đính kèm ít nhất 3 báo giá vì trên 10 triệu."
-    },
-    {
       "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
-      "avg_score": 0.5439,
-      "worst_metric": "context_precision",
+      "avg_score": 0.125,
+      "worst_metric": "faithfulness",
       "score": 0.0,
       "metrics": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.6755,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
         "context_precision": 0.0,
         "context_recall": 0.5
       },
-      "diagnosis": "Too many irrelevant chunks - context bị nhiễu, chunk đúng xếp hạng thấp",
-      "suggested_fix": "Thêm/siết reranking (cross-encoder), metadata filter theo version, giảm chunk size",
-      "answer": "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2024, đề cập đến hướng dẫn và quy trình xin nghỉ phép của nhân viên.\n\nVí dụ: nhân viên 9 năm thâm niên được 18 ngày phép (15 + 3). ## Quy định sử dụng Phép năm phải được đăng ký trước ít nhất 2 ngày làm việc qua hệ thống HR Portal. Nghỉ phép",
+      "diagnosis": "LLM hallucinating - câu trả lời chứa thông tin không có trong context",
+      "suggested_fix": "Siết prompt ('CHỈ dùng context'), giảm temperature, thêm citation bắt buộc",
+      "answer": "Không tìm thấy.",
       "ground_truth": "Theo chính sách v2024: 15 ngày cơ bản + 3 ngày thâm niên (9÷3=3) = 18 ngày phép. Lương Senior (P3-P4): 20-35 triệu VNĐ/tháng."
     },
     {
+      "question": "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
+      "avg_score": 0.2083,
+      "worst_metric": "answer_relevancy",
+      "score": 0.0,
+      "metrics": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.3333
+      },
+      "diagnosis": "Answer doesn't match question - trả lời lạc đề hoặc quá chung chung",
+      "suggested_fix": "Cải thiện prompt template, yêu cầu trả lời trực tiếp câu hỏi, thêm few-shot",
+      "answer": "Không tìm thấy.",
+      "ground_truth": "Laptop 30 triệu nằm trong khoảng 5-50 triệu nên cần Giám đốc phòng ban (Director) phê duyệt. Ngoài ra, mua sắm thiết bị CNTT cần có xác nhận cấu hình kỹ thuật từ phòng CNTT trước khi đề xuất. Cần đính kèm ít nhất 3 báo giá vì trên 10 triệu."
+    },
+    {
+      "question": "Nhân viên tạm ứng 15 triệu, sau 20 ngày mới thanh toán. Bị phạt bao nhiêu?",
+      "avg_score": 0.7114,
+      "worst_metric": "faithfulness",
+      "score": 0.5,
+      "metrics": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.8456,
+        "context_precision": 1.0,
+        "context_recall": 0.5
+      },
+      "diagnosis": "LLM hallucinating - câu trả lời chứa thông tin không có trong context",
+      "suggested_fix": "Siết prompt ('CHỈ dùng context'), giảm temperature, thêm citation bắt buộc",
+      "answer": "Bị phạt **2%/tháng** trên số tiền chưa hoàn ứng (15.000.000 VNĐ).",
+      "ground_truth": "Thời hạn thanh toán là 15 ngày. Quá hạn 5 ngày, bị tính phí 2%/tháng trên 15.000.000 VNĐ = 300.000 VNĐ/tháng (tính pro-rata khoảng 50.000 VNĐ cho 5 ngày)."
+    },
+    {
       "question": "Lương thử việc của nhân viên Junior mức cao nhất là bao nhiêu?",
-      "avg_score": 0.6862,
+      "avg_score": 0.7184,
       "worst_metric": "context_precision",
       "score": 0.0,
       "metrics": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7449,
+        "answer_relevancy": 0.8738,
         "context_precision": 0.0,
         "context_recall": 1.0
       },
       "diagnosis": "Too many irrelevant chunks - context bị nhiễu, chunk đúng xếp hạng thấp",
       "suggested_fix": "Thêm/siết reranking (cross-encoder), metadata filter theo version, giảm chunk size",
-      "answer": "Đoạn văn nằm trong tài liệu bảng lương năm 2024, thuộc phần quy định chi tiết về mức lương theo cấp bậc và chế độ lương thử việc.\n\n| Senior (P3-P4) | 20.000.000 - 35.000.000 | | Lead (P5) | 35.000.000 - 50.000.000 | | Manager (M1-M2) | 45.000.000 - 70.000.000 | ## Lương thử việc Nhân viên trong thời",
+      "answer": "Lương thử việc của nhân viên Junior mức cao nhất là 17.000.000 VNĐ/tháng (bằng 85% của mức lương cao nhất 20.000.000 VNĐ).",
       "ground_truth": "Junior cao nhất là 20.000.000 VNĐ/tháng. Lương thử việc = 85% x 20.000.000 = 17.000.000 VNĐ/tháng."
     },
     {
-      "question": "Nghỉ phép không lương 20 ngày cần ai phê duyệt?",
-      "avg_score": 0.7986,
-      "worst_metric": "context_recall",
-      "score": 0.5,
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng hoàn thành khóa học. Phải hoàn trả bao nhiêu?",
+      "avg_score": 0.7834,
+      "worst_metric": "faithfulness",
+      "score": 0.3333,
       "metrics": {
-        "faithfulness": 0.8571,
-        "answer_relevancy": 0.8372,
+        "faithfulness": 0.3333,
+        "answer_relevancy": 0.8002,
         "context_precision": 1.0,
-        "context_recall": 0.5
+        "context_recall": 1.0
       },
-      "diagnosis": "Missing relevant chunks - retrieval bỏ sót thông tin cần thiết",
-      "suggested_fix": "Tăng top_k, cải thiện chunking (hierarchical/structure), thêm BM25 vào hybrid",
-      "answer": "Đoạn văn nằm trong tài liệu quy định về nghỉ không lương, nói về quy trình và thẩm quyền phê duyệt các mức thời gian nghỉ khác nhau.\n\nNghỉ từ 1-5 ngày: trưởng phòng phê duyệt. Nghỉ từ 6-15 ngày: cần thêm phê duyệt của Giám đốc Nhân sự. Nghỉ từ 16-30 ngày: cần phê duyệt của **Giám đốc điều hành (CEO)",
-      "ground_truth": "Nghỉ 16-30 ngày cần phê duyệt của Giám đốc điều hành (CEO). Lưu ý: nghỉ trên 14 ngày không lương, nhân viên phải tự đóng phần bảo hiểm của mình."
-    },
-    {
-      "question": "Thông tin lương thuộc cấp độ phân loại dữ liệu nào?",
-      "avg_score": 0.8066,
-      "worst_metric": "context_recall",
-      "score": 0.5,
-      "metrics": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.7265,
-        "context_precision": 1.0,
-        "context_recall": 0.5
-      },
-      "diagnosis": "Missing relevant chunks - retrieval bỏ sót thông tin cần thiết",
-      "suggested_fix": "Tăng top_k, cải thiện chunking (hierarchical/structure), thêm BM25 vào hybrid",
-      "answer": "Đoạn văn nằm trong tài liệu hướng dẫn về kỳ lương, thảo luận về quy trình nhận phiếu lương, giải đáp thắc mắc và tính bảo mật thông tin lương.\n\nPhiếu lương điện tử được gửi qua email công ty vào ngày chi trả. Thắc mắc về lương liên hệ phòng Tài chính trong vòng 5 ngày làm việc. Thông tin lương là dữ",
-      "ground_truth": "Theo quy chế chi trả lương, thông tin lương được phân loại là dữ liệu Bí mật, cấm chia sẻ với đồng nghiệp. Theo chính sách phân loại dữ liệu, dữ liệu Bí mật (cấp 3) phải mã hóa khi truyền và hạn chế truy cập theo need-to-know."
+      "diagnosis": "LLM hallucinating - câu trả lời chứa thông tin không có trong context",
+      "suggested_fix": "Siết prompt ('CHỈ dùng context'), giảm temperature, thêm citation bắt buộc",
+      "answer": "Phải hoàn trả **25.000.000 VNĐ** (100% chi phí đào tạo đã được tài trợ, do nghỉ việc trước thời hạn cam kết 1 năm).",
+      "ground_truth": "Nhân viên phải cam kết làm việc ít nhất 1 năm sau khi hoàn thành khóa học. Nghỉ sau 8 tháng là trước hạn cam kết, phải hoàn trả 100% chi phí tức 25.000.000 VNĐ."
     }
   ]
 }

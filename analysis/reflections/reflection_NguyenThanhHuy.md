@@ -16,8 +16,8 @@
 | Structure-aware chunking | M1 | `chunk_structure_aware()` | Regex `(^#{1,3}\s+.+$)` với `re.MULTILINE` tách theo header markdown → **106 chunks, avg 197**. Ưu điểm lớn nhất: mỗi chunk mang `metadata["section"]` = tên header, rất hữu ích để filter theo version tài liệu (`nghi_phep_nam_v2023` vs `v2024`). max_len 789 vì có section chứa bảng dài — đúng ý đồ "không cắt giữa bảng". |
 | BM25 tiếng Việt | M2 | `segment_vietnamese()` + `BM25Search` | underthesea nối từ ghép bằng `_` ("nghỉ_phép"). Nếu giữ `_`, corpus có token `nghỉ_phép` còn query `"nghỉ phép"` tách thành 2 token → **BM25 score = 0**. Bắt buộc `replace("_", " ")` sau segment. Tôi thêm `.lower()` cho cả corpus và query để khớp không phân biệt hoa/thường. |
 | BM25 + Dense fusion (RRF) | M2 | `reciprocal_rank_fusion()` | RRF chỉ dùng **thứ hạng**, nên không phải chuẩn hoá điểm giữa BM25 (không giới hạn, ~0-15) và cosine similarity (0-1) — đây là lý do RRF thắng weighted-sum trong thực tế. Công thức `1/(k + rank + 1)` với k=60 làm phẳng chênh lệch giữa top-1 và top-5, ưu tiên doc xuất hiện ở **cả hai** danh sách. |
-| Cross-encoder reranking | M3 | `CrossEncoderReranker.rerank()` | `bge-reranker-v2-m3` cho điểm cặp (query, doc) thay vì so 2 vector độc lập → bắt được quan hệ ngữ nghĩa mà bi-encoder bỏ sót. Trade-off rất rõ trên CPU: xem bảng latency ở `reports/latency_report.json` (rerank là bước đắt nhất trong pipeline, ~20 cặp/query). Đổi lại top-20 → top-3 làm context precision tăng và giảm nhiễu cho LLM. |
-| RAGAS 4 metrics | M4 | `evaluate_ragas()` | 4 metric chia làm 2 nhóm: **retrieval** (context_precision, context_recall — đo hệ thống tìm kiếm) và **generation** (faithfulness, answer_relevancy — đo LLM). Nhờ tách nhóm này mà Diagnostic Tree mới hoạt động: metric yếu nhất chỉ thẳng ra tầng nào đang lỗi. |
+| Cross-encoder reranking | M3 | `CrossEncoderReranker.rerank()` | `bge-reranker-v2-m3` cho điểm cặp (query, doc) thay vì so 2 vector độc lập → bắt được quan hệ ngữ nghĩa mà bi-encoder bỏ sót. Trade-off đo được trên CPU: **16.672 ms/query** cho rerank vs **334 ms/query** cho hybrid retrieval — đắt gấp 50×, và gấp 3.5× LLM generation. Đây là lý do production thật phải rerank theo tầng chứ không bật mặc định. |
+| RAGAS 4 metrics | M4 | `evaluate_ragas()` | 4 metric chia 2 nhóm: **retrieval** (context_precision 0.7667, context_recall 0.8417) và **generation** (faithfulness 0.8595, answer_relevancy 0.7611). Metric thấp nhất là **context_precision** — vì child chunk 256 ký tự cắt bảng markdown mất header nên mảnh chứa đáp án không được xếp top-1 (failure #4 trả lời đúng 100% nhưng precision = 0.0). Nhờ tách 2 nhóm mà Diagnostic Tree mới chỉ đúng tầng lỗi. |
 | Diagnostic / Error Tree | M4 | `DIAGNOSTIC_TREE` + `failure_analysis()` | Map `worst_metric → (nguyên nhân gốc, cách sửa)`. Sort theo điểm trung bình 4 metric tăng dần → lấy bottom-5. Điểm hay: cùng một câu trả lời sai, nếu recall thấp thì sửa retrieval, còn nếu faithfulness thấp thì sửa prompt — hai hướng hoàn toàn khác nhau. |
 | Contextual embeddings (Anthropic) | M5 | `contextual_prepend()` / `_enrich_single_call()` | Prepend 1 câu mô tả "chunk này nằm ở đâu, nói về gì" trước khi embed. Với chunk 256 ký tự bị cắt giữa tài liệu, câu context này bù lại thông tin đã mất khi tách chunk (tên tài liệu, chủ đề section) → giảm retrieval failure. |
 | Enrichment cost optimization | M5 | `_enrich_single_call()` | Combined mode: 1 API call/chunk trả về **summary + 3 hypothesis questions + context line + metadata** thay vì 4 call riêng → giảm 75% số request. Cực kỳ quan trọng khi free tier Gemini chỉ cho 15 req/phút: 104 chunks × 1 call = 275s, còn 4 call/chunk sẽ mất ~18 phút. |
@@ -104,13 +104,36 @@ UnicodeEncodeError: 'charmap' codec can't encode characters in position 2-3
 ```
 Console Windows mặc định cp1252. Đã thêm `sys.stdout.reconfigure(encoding="utf-8")` vào `main.py`.
 
+### 2.9. Fallback im lặng làm sai lệch RAGAS (lỗi khó phát hiện nhất)
+
+Lần chạy production đầu tiên cho faithfulness = **0.9929** — cao đáng ngờ. Kiểm tra checkpoint
+`pipeline_predictions.json`:
+
+```python
+fallback = [i for i,(a,c) in enumerate(zip(answers, contexts)) if c and a.strip()==c[0].strip()]
+# -> 13/20 câu: answer trùng y nguyên contexts[0]
+```
+
+**13/20 câu bị 429 rate limit** → `answer_from_context()` rơi vào `return contexts[0]`. Khi answer **là** context
+thì faithfulness luôn ~1.0 (mọi claim đều "grounded"), còn answer_relevancy bị dìm (chunk thô không trả lời trực tiếp).
+
+**Cách sửa:**
+1. Throttle phía client: `LLM_MIN_INTERVAL = 4.5s` (15 req/phút của free tier) trong `_throttle()`.
+2. Đọc `retry_delay { seconds: N }` từ chính lỗi 429 để chờ đúng khoảng API yêu cầu, thay vì backoff cố định 2/4/8s.
+3. Thêm `--regen` để sinh lại answer từ checkpoint (không phải index + rerank lại ~15 phút) và **đếm số câu fallback**
+   sau mỗi lần chạy.
+
+Sau khi sửa: 1/20 fallback, faithfulness về **0.8595** — thấp hơn nhưng là số thật. Bài học lớn nhất của buổi lab:
+**điểm cao bất thường phải nghi ngờ pipeline trước khi tin vào model.**
+
 ### Kiến thức còn thiếu → cách bổ sung
 
 | Thiếu | Cách bổ sung |
 |-------|--------------|
 | Cách RAGAS wrap LLM và gọi metric | Đọc trực tiếp source `ragas/llms/base.py`, `ragas/metrics/` trong `.venv` — nhanh hơn đọc docs |
 | Quản lý bộ nhớ khi chạy transformer trên CPU | Đo bằng `psutil` ở từng bước thay vì đoán; hiểu `max_seq_length` ảnh hưởng activation memory |
-| Quota model Gemini | `genai.list_models()` + đọc `quota_id`/`quota_value` trong message 429 để biết đang chạm limit/phút hay limit/ngày |
+| Quota model Gemini | `genai.list_models()` + đọc `quota_id`/`quota_value` trong message 429 để phân biệt limit/phút và limit/ngày. Số liệu đo được: `gemini-3.6-flash` và `gemini-3.5-flash` = **20 req/ngày**, `gemini-3.5-flash-lite` và `gemini-3.1-flash-lite` = **500 req/ngày**, tất cả 15 req/phút |
+| Đọc metric RAGAS đúng cách | 3/5 failures có câu trả lời ĐÚNG — điểm thấp chỉ ra chỗ hệ thống không chứng minh được đáp án (faithfulness) hoặc xếp hạng context kém (precision), không phải trả lời sai |
 
 ---
 
@@ -155,5 +178,5 @@ Console Windows mặc định cp1252. Đã thêm `sys.stdout.reconfigure(encodin
 |----------|---------------|---------|
 | Hiểu bài giảng | 4 | Hiểu rõ vì sao RRF không cần chuẩn hoá điểm và vì sao cross-encoder chính xác hơn bi-encoder |
 | Code quality | 4 | Tách `src/llm.py` thành 1 lớp provider giúp đổi Gemini/OpenAI không phải sửa 4 module |
-| Problem solving | 5 | Tự chẩn đoán và sửa được 3 lỗi môi trường khó: access violation (RAM), segfault khi encode, RAGAS-Gemini TypeError |
+| Problem solving | 5 | Tự chẩn đoán và sửa 4 lỗi khó: access violation (RAM), segfault khi encode, RAGAS-Gemini TypeError, và fallback im lặng làm sai lệch metric |
 | Debug bằng số liệu | 5 | Dùng `psutil` đo RAM từng bước, đọc `quota_id` trong 429, đọc source RAGAS thay vì đoán |

@@ -16,7 +16,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import (OPENAI_API_KEY, GOOGLE_API_KEY, GEMINI_CHAT_MODEL, GEMINI_JUDGE_MODEL,
-                    GEMINI_EMBED_MODEL, OPENAI_CHAT_MODEL, LLM_MAX_RETRIES)
+                    GEMINI_EMBED_MODEL, OPENAI_CHAT_MODEL, LLM_MAX_RETRIES, LLM_RPM)
 
 _GEMINI_MODELS: dict[str, object] = {}
 _OPENAI_CLIENT = None
@@ -66,10 +66,48 @@ def _gemini_model(json_mode: bool, max_tokens: int, system: str):
 # ─── Public API ──────────────────────────────────────────
 
 
+_CALL_TIMES: list[float] = []
+
+
+def _throttle() -> None:
+    """Rate limiter cửa sổ trượt: tối đa LLM_RPM request trong 60 giây.
+
+    Free tier Gemini = 15 request/phút. Nếu gọi liên tục, request thứ 16 bị 429 và
+    rơi vào fallback `answer = contexts[0]` — làm faithfulness bị thổi lên giả
+    (answer trùng context nên luôn "grounded") và answer_relevancy tụt.
+
+    Dùng cửa sổ trượt thay vì sleep cố định giữa 2 call: những call lẻ (test, tra cứu
+    đơn) không phải chờ, chỉ khi chạm hạn mức mới chờ đúng phần cần thiết.
+    """
+    if LLM_RPM <= 0:
+        return
+
+    now = time.time()
+    _CALL_TIMES[:] = [t for t in _CALL_TIMES if now - t < 60.0]
+    if len(_CALL_TIMES) >= LLM_RPM:
+        wait = 60.0 - (now - _CALL_TIMES[0]) + 0.5
+        if wait > 0:
+            print(f"  ⏳ Đạt {LLM_RPM} request/phút — chờ {wait:.0f}s", flush=True)
+            time.sleep(wait)
+        now = time.time()
+        _CALL_TIMES[:] = [t for t in _CALL_TIMES if now - t < 60.0]
+    _CALL_TIMES.append(now)
+
+
+def _retry_delay_from_error(err: Exception, fallback: float) -> float:
+    """Đọc `retry_delay { seconds: N }` mà Gemini trả về trong lỗi 429."""
+    import re
+    match = re.search(r"retry_delay\s*{\s*seconds:\s*(\d+)", str(err))
+    if match:
+        return float(match.group(1)) + 1.0
+    return fallback
+
+
 def chat(system: str, user: str, json_mode: bool = False, max_tokens: int = 512) -> str | None:
     """Gọi LLM 1 lượt. Trả về text, hoặc None nếu không có provider / lỗi hết retry.
 
-    Có retry + backoff vì Gemini free tier giới hạn RPM (429 RESOURCE_EXHAUSTED).
+    Có throttle + retry theo `retry_delay` mà API trả về, vì Gemini free tier giới
+    hạn 15 request/phút (429 RESOURCE_EXHAUSTED).
     """
     p = provider()
     if p == "none":
@@ -78,6 +116,7 @@ def chat(system: str, user: str, json_mode: bool = False, max_tokens: int = 512)
     last_error = None
     for attempt in range(LLM_MAX_RETRIES):
         try:
+            _throttle()
             if p == "gemini":
                 model = _gemini_model(json_mode, max_tokens, system)
                 resp = model.generate_content(user)
@@ -99,8 +138,13 @@ def chat(system: str, user: str, json_mode: bool = False, max_tokens: int = 512)
             return (resp.choices[0].message.content or "").strip()
         except Exception as e:
             last_error = e
+            # Hết quota NGÀY thì retry vô nghĩa (phải chờ tới hôm sau) -> fallback ngay
+            if "PerDay" in str(e):
+                print(f"  ⚠️  Hết quota ngày của {GEMINI_CHAT_MODEL} — dùng fallback extractive.")
+                return None
             if attempt < LLM_MAX_RETRIES - 1:
-                time.sleep(2 ** attempt * 2)  # 2s, 4s, 8s...
+                # 429 kèm retry_delay -> chờ đúng khoảng API yêu cầu, còn lại backoff 2/4/8s
+                time.sleep(_retry_delay_from_error(e, 2 ** attempt * 2))
 
     print(f"  ⚠️  LLM call failed sau {LLM_MAX_RETRIES} lần thử: {last_error}")
     return None
