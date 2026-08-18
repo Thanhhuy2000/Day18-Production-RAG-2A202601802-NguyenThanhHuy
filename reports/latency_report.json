@@ -1,0 +1,16 @@
+{
+  "n_queries": 20,
+  "steps_ms": {
+    "1_chunking": 290.3,
+    "2_enrichment": 15.8,
+    "3_indexing": 90146.5,
+    "4_reranker_init": 0.0,
+    "5_retrieval_total": 6683.9,
+    "5_retrieval_per_query": 334.2,
+    "6_rerank_total": 333444.2,
+    "6_rerank_per_query": 16672.2,
+    "7_generation_total": 94991.3,
+    "7_generation_per_query": 4749.6,
+    "8_ragas": 640736.1
+  }
+}

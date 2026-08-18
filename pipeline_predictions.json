@@ -1,0 +1,170 @@
+{
+  "questions": [
+    "Nhân viên được nghỉ bao nhiêu ngày khi kết hôn?",
+    "Bảo hiểm sức khỏe PVI có hạn mức bao nhiêu cho nhân viên?",
+    "Phụ cấp ăn trưa hàng tháng là bao nhiêu?",
+    "Nhân viên được nghỉ bao nhiêu ngày phép năm?",
+    "Thâm niên bao nhiêu năm thì được cộng thêm ngày phép?",
+    "Mật khẩu phải có tối thiểu bao nhiêu ký tự?",
+    "Bao lâu phải đổi mật khẩu một lần?",
+    "Có cần kích hoạt xác thực đa yếu tố (MFA) không?",
+    "Nhân viên thử việc có được nghỉ phép năm không?",
+    "Khi phát hiện malware trên máy, nhân viên có nên tự xử lý không?",
+    "Nhân viên thử việc có được hưởng bảo hiểm sức khỏe PVI không?",
+    "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+    "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
+    "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng hoàn thành khóa học. Phải hoàn trả bao nhiêu?",
+    "Mentor và buddy của nhân viên mới có thể là cùng một người không? Quản lý trực tiếp có thể làm mentor không?",
+    "Muốn mua thiết bị trị giá 55 triệu cần ai phê duyệt?",
+    "Nhân viên tạm ứng 15 triệu, sau 20 ngày mới thanh toán. Bị phạt bao nhiêu?",
+    "Lương thử việc của nhân viên Junior mức cao nhất là bao nhiêu?",
+    "Thông tin lương thuộc cấp độ phân loại dữ liệu nào?",
+    "Nghỉ phép không lương 20 ngày cần ai phê duyệt?"
+  ],
+  "answers": [
+    "3 ngày làm việc",
+    "Hạn mức bảo hiểm cho nhân viên là **200.000.000 VNĐ/năm** (bao gồm nội trú, ngoại trú và nha khoa).",
+    "1.000.000 VNĐ/tháng.",
+    "Tùy theo phiên bản chính sách:\n- Năm 2023: **12 ngày phép năm** có lương dành cho nhân viên chính thức.\n- Năm 2024: **15 ngày phép năm** có lương dành cho nhân viên chính thức (nhân viên có thâm niên được cộng thêm số ngày theo quy định, ví dụ 9 năm thâm niên được 18 ngày).",
+    "Nhân viên có thâm niên từ 3 năm trở lên hoặc từ 5 năm trở lên tùy theo quy định tại từng phần trong tài liệu (cộng thêm 1 ngày phép cho mỗi 3 năm hoặc 5 năm làm việc liên tục).",
+    "Mật khẩu phải có tối thiểu **12 ký tự** (theo phiên bản 2.0 hiện hành) hoặc tối thiểu **8 ký tự** (theo phiên bản 1.0 cũ).",
+    "Đoạn văn nằm trong tài liệu hướng dẫn về mật khẩu, thảo luận về các quy tắc bảo mật và chu kỳ thay đổi mật khẩu của hệ thống.\n\nKhông được sử dụng tên đăng nhập hoặc các thông tin cá nhân dễ đoán làm mật khẩu. ## Chu kỳ thay đổi Mật khẩu phải được thay đổi **mỗi 90 ngày**. Hệ thống sẽ tự động nhắc nhở trước 7 ngày. Mật khẩu mới không được trùng với 3 mật khẩu gần nhất. ## Lưu ý",
+    "Đoạn văn nằm trong phần hướng dẫn bảo mật tài khoản của tài liệu mật khẩu, nói về khuyến nghị passphrase và quy định bắt buộc sử dụng MFA.\n\nKhuyến khích sử dụng passphrase dài hơn 16 ký tự. ## Xác thực đa yếu tố (MFA) Tất cả nhân viên **bắt buộc** kích hoạt MFA cho tài khoản email, VPN và các hệ thống nội bộ.",
+    "Không. Nhân viên thử việc **KHÔNG được nghỉ phép năm**.",
+    "Đoạn văn nằm trong tài liệu hướng dẫn bảo mật sự cố, nói về quy trình và thời gian quy định khi báo cáo cũng như xử lý sự cố bảo mật.\n\nKhi phát hiện hoặc nghi ngờ sự cố bảo mật, nhân viên **phải báo cáo trong vòng 1 giờ** qua email **helpdesk@cty.vn** hoặc hotline CNTT nội bộ (ext. 9999). Tuyệt đối **không tự ý xử lý malware** hoặc tìm cách khắc phục mà không có sự hướng dẫn của đội CNTT.",
+    "Đoạn văn nằm trong tài liệu hướng dẫn về quy định thử việc, nói về chế độ phúc lợi và quy trình đánh giá trong thời gian thử việc.\n\nNhân viên thử việc được tham gia bảo hiểm xã hội bắt buộc nhưng chưa được hưởng gói bảo hiểm sức khỏe PVI. ## Đánh giá thử việc Quản lý trực tiếp thực hiện đánh giá vào ngày thứ 30 (giữa kỳ) và ngày thứ 55 (cuối kỳ).",
+    "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2024, đề cập đến hướng dẫn và quy trình xin nghỉ phép của nhân viên.\n\nVí dụ: nhân viên 9 năm thâm niên được 18 ngày phép (15 + 3). ## Quy định sử dụng Phép năm phải được đăng ký trước ít nhất 2 ngày làm việc qua hệ thống HR Portal. Nghỉ phép từ 5 ngày trở lên cần được trưởng phòng phê duyệt.",
+    "Đoạn văn nằm trong tài liệu mua sắm, đề cập đến quy trình và quy định mua sắm thiết bị CNTT và các trường hợp khẩn cấp.\n\nMua sắm thiết bị CNTT (laptop, server, phần mềm) cần có xác nhận của phòng CNTT về cấu hình kỹ thuật trước khi đề xuất. Đơn hàng khẩn cấp có thể bỏ qua yêu cầu 3 báo giá nhưng phải có giải trình bằng văn bản.",
+    "Đoạn văn nằm ở phần quy định về đào tạo của tài liệu và nói về cam kết thời gian làm việc sau khi nhận tài trợ.\n\nNhân viên được tài trợ đào tạo phải **cam kết làm việc tại công ty ít nhất 1 năm** sau khi hoàn thành khóa học. Nếu nghỉ việc trước thời hạn cam kết, nhân viên phải hoàn trả **100% chi phí** đào tạo đã được tài trợ. ## Quy trình 1.",
+    "Đoạn văn nằm trong tài liệu hướng dẫn mentor_buddy.md, nói về các quy tắc phân công và tiêu chí lựa chọn Buddy và Mentor cho nhân viên mới.\n\nBuddy là nhân viên cùng phòng ban, thâm niên từ 6 tháng. ## Quy tắc quan trọng Mentor và Buddy phải là **hai người khác nhau** để đảm bảo nhân viên mới có nhiều nguồn hỗ trợ đa dạng. Quản lý trực tiếp không được làm Mentor hoặc Buddy.",
+    "Đoạn văn nằm trong phần quy định về hạn mức phê duyệt tài chính và quy trình mua sắm của tài liệu.\n\n| Từ **5.000.000 - 50.000.000 VNĐ** | Giám đốc phòng ban (Director) | | Trên **50.000.000 VNĐ** | Tổng Giám đốc (CEO) | ## Quy trình đề xuất 1. Tạo phiếu đề xuất mua sắm trên hệ thống Procurement Portal 2.",
+    "Đoạn văn nằm trong phần quy định về tạm ứng và phạt quá hạn của tài liệu, tập trung thảo luận về chính sách tài chính liên quan đến việc hoàn ứng công tác.\n\nTrường hợp công tác dài ngày, thời hạn tính từ ngày kết thúc chuyến công tác. ## Phạt quá hạn Khoản tạm ứng chưa thanh toán sau 15 ngày sẽ bị tính phí **2%/tháng** trên số tiền chưa hoàn ứng. Phí này được khấu trừ vào lương tháng kế tiếp.",
+    "Đoạn văn nằm trong tài liệu bảng lương năm 2024, thuộc phần quy định chi tiết về mức lương theo cấp bậc và chế độ lương thử việc.\n\n| Senior (P3-P4) | 20.000.000 - 35.000.000 | | Lead (P5) | 35.000.000 - 50.000.000 | | Manager (M1-M2) | 45.000.000 - 70.000.000 | ## Lương thử việc Nhân viên trong thời gian thử việc được nhận **85% lương** của cấp bậc tương ứng.",
+    "Đoạn văn nằm trong tài liệu hướng dẫn về kỳ lương, thảo luận về quy trình nhận phiếu lương, giải đáp thắc mắc và tính bảo mật thông tin lương.\n\nPhiếu lương điện tử được gửi qua email công ty vào ngày chi trả. Thắc mắc về lương liên hệ phòng Tài chính trong vòng 5 ngày làm việc. Thông tin lương là dữ liệu **Bí mật**, cấm chia sẻ với đồng nghiệp.",
+    "Đoạn văn nằm trong tài liệu quy định về nghỉ không lương, nói về quy trình và thẩm quyền phê duyệt các mức thời gian nghỉ khác nhau.\n\nNghỉ từ 1-5 ngày: trưởng phòng phê duyệt. Nghỉ từ 6-15 ngày: cần thêm phê duyệt của Giám đốc Nhân sự. Nghỉ từ 16-30 ngày: cần phê duyệt của **Giám đốc điều hành (CEO)**. ## Ảnh hưởng đến phúc lợi"
+  ],
+  "contexts": [
+    [
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách nghỉ phép đặc biệt, quy định về quyền lợi nghỉ phép có lương trong trường hợp kết hôn của nhân viên.\n\n# Chính sách nghỉ phép đặc biệt > Phiên bản: 1.1 | Ngày hiệu lực: 01/03/2024 | Phòng ban: Nhân sự ## Các trường hợp được nghỉ phép đặc biệt Nhân viên được nghỉ có lương trong các trường hợp sau đây mà không trừ vào phép năm: - **Kết hôn**: 3 ngày làm việc",
+      "Đoạn văn nằm ở phần cuối của tài liệu về nghỉ phép đặc biệt, quy định về thủ tục nộp giấy tờ chứng minh và chế tài khi vi phạm.\n\nNhân viên cần cung cấp giấy tờ chứng minh trong vòng 5 ngày làm việc sau khi quay lại: giấy đăng ký kết hôn, giấy khai tử, giấy khai sinh. Trường hợp không cung cấp đầy đủ, số ngày nghỉ sẽ bị trừ vào phép năm. ## Lưu ý",
+      "Đoạn văn nằm ở phần quy định về chế độ nghỉ phép đặc biệt và hồ sơ liên quan trong tài liệu về chính sách nhân sự.\n\n- **Tang lễ** (cha mẹ, vợ/chồng, con): 3 ngày làm việc - **Sinh con** (nam giới): 5 ngày làm việc liên tục - **Con kết hôn**: 1 ngày làm việc ## Hồ sơ cần thiết"
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu bảo hiểm sức khỏe, thảo luận về hạn mức bảo hiểm năm dành cho cá nhân nhân viên và người thân.\n\nHạn mức bảo hiểm: **200.000.000 VNĐ/năm** bao gồm nội trú, ngoại trú và nha khoa. ## Gói gia đình Nhân viên có thể đăng ký thêm gói bảo hiểm cho người thân (vợ/chồng, con dưới 18 tuổi) với hạn mức **50.000.000 VNĐ/năm/người**.",
+      "Đoạn văn nằm trong tài liệu bảo hiểm sức khỏe, mô tả tỷ lệ đóng góp chi phí gói gia đình và quy trình sử dụng bảo hiểm.\n\nChi phí gói gia đình: công ty hỗ trợ 50%, nhân viên đóng 50% qua khấu trừ lương hàng tháng. ## Quy trình sử dụng Nhân viên xuất trình thẻ bảo hiểm PVI tại các bệnh viện/phòng khám trong danh sách liên kết.",
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách bảo hiểm sức khỏe, giới thiệu về quyền lợi bảo hiểm dành cho nhân viên chính thức.\n\n# Chính sách bảo hiểm sức khỏe > Phiên bản: 1.5 | Ngày hiệu lực: 01/04/2024 | Phòng ban: Nhân sự ## Bảo hiểm cho nhân viên Công ty cung cấp gói bảo hiểm sức khỏe toàn diện qua **PVI Insurance** cho tất cả nhân viên chính thức."
+    ],
+    [
+      "Đoạn văn nằm ở phần Chính sách phụ cấp của tài liệu nhân sự, trình bày về mức hưởng và phương thức chi trả phụ cấp ăn trưa cho nhân viên.\n\n# Chính sách phụ cấp > Phiên bản: 2.1 | Ngày hiệu lực: 01/01/2024 | Phòng ban: Nhân sự ## Phụ cấp ăn trưa Tất cả nhân viên được hưởng phụ cấp ăn trưa **1.000.000 VNĐ/tháng**, chi trả cùng kỳ lương.",
+      "Đoạn văn nằm ở phần chính sách công tác trong nước thuộc tài liệu chính sách công tác phí của Phòng Tài chính, ban hành ngày 01/01/2024.\n\n# Chính sách công tác phí > Phiên bản: 1.5 | Ngày hiệu lực: 01/01/2024 | Phòng ban: Tài chính ## Công tác trong nước - **Phụ cấp ngày**: **800.000 VNĐ/ngày** (bao gồm ăn uống và di chuyển nội thành)",
+      "Đoạn văn nằm trong tài liệu về phụ cấp, cụ thể là phần quy định về phụ cấp đi lại cho nhân viên.\n\nPhụ cấp này không áp dụng cho những ngày nghỉ phép, nghỉ ốm hoặc công tác ngoài. ## Phụ cấp đi lại Nhân viên có tần suất công tác ngoài văn phòng trên 8 ngày/tháng được hưởng phụ cấp đi lại theo thực tế, tối đa **2.000.000 VNĐ/tháng**."
+    ],
+    [
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách nghỉ phép năm 2023, giới thiệu về số lượng ngày phép năm có lương dành cho nhân viên chính thức.\n\n# Chính sách nghỉ phép năm (Phiên bản 2023) > Phiên bản: 1.0 | Ngày hiệu lực: 01/01/2023 | Phòng ban: Nhân sự ## Số ngày phép năm Mỗi nhân viên chính thức được hưởng **12 ngày phép năm** có lương.",
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách nghỉ phép năm 2024, thuộc phòng ban Nhân sự, nói về số ngày phép năm được hưởng cho nhân viên chính thức.\n\n# Chính sách nghỉ phép năm (Phiên bản 2024) > Phiên bản: 2.0 | Ngày hiệu lực: 01/01/2024 | Phòng ban: Nhân sự ## Số ngày phép năm Mỗi nhân viên chính thức được hưởng **15 ngày phép năm** có lương, tăng từ 12 ngày so với chính sách năm 2023.",
+      "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2024, đề cập đến hướng dẫn và quy trình xin nghỉ phép của nhân viên.\n\nVí dụ: nhân viên 9 năm thâm niên được 18 ngày phép (15 + 3). ## Quy định sử dụng Phép năm phải được đăng ký trước ít nhất 2 ngày làm việc qua hệ thống HR Portal. Nghỉ phép từ 5 ngày trở lên cần được trưởng phòng phê duyệt."
+    ],
+    [
+      "Đoạn văn nằm trong phần quy định về phép năm của tài liệu nhân sự, nói về chính sách cộng thêm ngày phép theo thâm niên.\n\nNhân viên có thâm niên từ **5 năm trở lên** được cộng thêm **1 ngày phép** cho mỗi 5 năm làm việc liên tục. Ví dụ: nhân viên 10 năm thâm niên được 14 ngày phép. ## Quy định sử dụng",
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách phép năm 2024, đề cập đến hiệu lực thay thế và quy định về số ngày phép tính theo thâm niên.\n\nChính sách này thay thế hoàn toàn phiên bản 1.0 ban hành ngày 01/01/2023. ## Thâm niên công tác Nhân viên có thâm niên từ **3 năm trở lên** được cộng thêm **1 ngày phép** cho mỗi 3 năm làm việc liên tục.",
+      "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2024, đề cập đến hướng dẫn và quy trình xin nghỉ phép của nhân viên.\n\nVí dụ: nhân viên 9 năm thâm niên được 18 ngày phép (15 + 3). ## Quy định sử dụng Phép năm phải được đăng ký trước ít nhất 2 ngày làm việc qua hệ thống HR Portal. Nghỉ phép từ 5 ngày trở lên cần được trưởng phòng phê duyệt."
+    ],
+    [
+      "Đoạn văn nằm phần đầu của tài liệu chính sách mật khẩu phiên bản 2.0 do phòng ban CNTT ban hành, tập trung vào các tiêu chuẩn kỹ thuật của mật khẩu.\n\n# Chính sách mật khẩu (Phiên bản hiện hành) > Phiên bản: 2.0 | Ngày hiệu lực: 01/07/2024 | Phòng ban: CNTT ## Yêu cầu mật khẩu Mật khẩu phải có tối thiểu **12 ký tự**, bao gồm ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt (!@#$%^&*).",
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách mật khẩu phiên bản cũ, quy định các tiêu chuẩn cơ bản cho mật khẩu.\n\n# Chính sách mật khẩu (Phiên bản cũ) > Phiên bản: 1.0 | Ngày hiệu lực: 01/01/2022 | Phòng ban: CNTT | Trạng thái: ĐÃ THAY THẾ bởi v2.0 ## Yêu cầu mật khẩu Mật khẩu phải có tối thiểu **8 ký tự**, bao gồm ít nhất 1 chữ hoa, 1 chữ thường và 1 số.",
+      "Đoạn văn nằm trong phần hướng dẫn bảo mật tài khoản của tài liệu mật khẩu, nói về khuyến nghị passphrase và quy định bắt buộc sử dụng MFA.\n\nKhuyến khích sử dụng passphrase dài hơn 16 ký tự. ## Xác thực đa yếu tố (MFA) Tất cả nhân viên **bắt buộc** kích hoạt MFA cho tài khoản email, VPN và các hệ thống nội bộ."
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu hướng dẫn về mật khẩu, thảo luận về các quy tắc bảo mật và chu kỳ thay đổi mật khẩu của hệ thống.\n\nKhông được sử dụng tên đăng nhập hoặc các thông tin cá nhân dễ đoán làm mật khẩu. ## Chu kỳ thay đổi Mật khẩu phải được thay đổi **mỗi 90 ngày**. Hệ thống sẽ tự động nhắc nhở trước 7 ngày. Mật khẩu mới không được trùng với 3 mật khẩu gần nhất. ## Lưu ý",
+      "Đoạn văn nằm trong tài liệu chính sách mật khẩu, quy định về phương thức xác thực đa yếu tố và quy tắc định kỳ thay đổi mật khẩu của tổ chức.\n\nPhương thức MFA được chấp nhận: ứng dụng Authenticator (ưu tiên), SMS OTP, hoặc YubiKey. ## Chu kỳ thay đổi Mật khẩu phải được thay đổi **mỗi 120 ngày**. Hệ thống tự động nhắc nhở trước 14 ngày. Mật khẩu mới không được trùng với 5 mật khẩu gần nhất.",
+      "Đoạn văn nằm ở phần cuối của tài liệu mat_khau_v2.md, quy định về điều kiện khóa tài khoản và hiệu lực thay thế của chính sách mật khẩu.\n\nTài khoản bị khóa sau 5 lần nhập sai liên tiếp. ## Chính sách thay thế Văn bản này thay thế Chính sách mật khẩu v1.0 ban hành ngày 01/01/2022."
+    ],
+    [
+      "Đoạn văn nằm trong phần hướng dẫn bảo mật tài khoản của tài liệu mật khẩu, nói về khuyến nghị passphrase và quy định bắt buộc sử dụng MFA.\n\nKhuyến khích sử dụng passphrase dài hơn 16 ký tự. ## Xác thực đa yếu tố (MFA) Tất cả nhân viên **bắt buộc** kích hoạt MFA cho tài khoản email, VPN và các hệ thống nội bộ.",
+      "Đoạn văn nằm trong tài liệu chính sách mật khẩu, quy định về phương thức xác thực đa yếu tố và quy tắc định kỳ thay đổi mật khẩu của tổ chức.\n\nPhương thức MFA được chấp nhận: ứng dụng Authenticator (ưu tiên), SMS OTP, hoặc YubiKey. ## Chu kỳ thay đổi Mật khẩu phải được thay đổi **mỗi 120 ngày**. Hệ thống tự động nhắc nhở trước 14 ngày. Mật khẩu mới không được trùng với 5 mật khẩu gần nhất.",
+      "Đoạn văn nằm trong tài liệu mua sắm, đề cập đến quy trình và quy định mua sắm thiết bị CNTT và các trường hợp khẩn cấp.\n\nMua sắm thiết bị CNTT (laptop, server, phần mềm) cần có xác nhận của phòng CNTT về cấu hình kỹ thuật trước khi đề xuất. Đơn hàng khẩn cấp có thể bỏ qua yêu cầu 3 báo giá nhưng phải có giải trình bằng văn bản."
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu hướng dẫn về quy định thử việc và nói về các chế độ, quyền lợi của nhân viên trong giai đoạn này.\n\nPhụ cấp ăn trưa được áp dụng đầy đủ từ ngày đầu tiên. ## Quyền lợi trong thử việc Nhân viên thử việc **KHÔNG được nghỉ phép năm**. Trường hợp cần nghỉ việc riêng, nhân viên thử việc phải xin nghỉ không lương và được trưởng phòng phê duyệt.",
+      "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2024, đề cập đến hướng dẫn và quy trình xin nghỉ phép của nhân viên.\n\nVí dụ: nhân viên 9 năm thâm niên được 18 ngày phép (15 + 3). ## Quy định sử dụng Phép năm phải được đăng ký trước ít nhất 2 ngày làm việc qua hệ thống HR Portal. Nghỉ phép từ 5 ngày trở lên cần được trưởng phòng phê duyệt.",
+      "Đoạn văn nằm ở phần đầu của tài liệu quy định về nghỉ phép năm, đề cập đến cách tính số ngày phép theo năm dương lịch và tỷ lệ pro-rata cho nhân viên mới.\n\nSố ngày phép được tính theo năm dương lịch từ 01/01 đến 31/12. Nhân viên vào công ty giữa năm sẽ được tính pro-rata theo số tháng làm việc thực tế. ## Thâm niên công tác"
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu hướng dẫn bảo mật sự cố, nói về quy trình và thời gian quy định khi báo cáo cũng như xử lý sự cố bảo mật.\n\nKhi phát hiện hoặc nghi ngờ sự cố bảo mật, nhân viên **phải báo cáo trong vòng 1 giờ** qua email **helpdesk@cty.vn** hoặc hotline CNTT nội bộ (ext. 9999). Tuyệt đối **không tự ý xử lý malware** hoặc tìm cách khắc phục mà không có sự hướng dẫn của đội CNTT.",
+      "Đoạn văn nằm trong tài liệu bảo mật sự cố, phần phân loại mức độ sự cố và thời gian ứng phó.\n\n- **Trung bình**: phát hiện malware trên 1 máy, truy cập trái phép → xử lý trong 8 giờ - **Thấp**: email spam, cảnh báo antivirus tự động → xử lý trong 24 giờ ## Trách nhiệm",
+      "Đoạn văn nằm trong phần quy chế xử lý sự cố của tài liệu bảo mật, nói về hậu quả và hình thức kỷ luật đối với các vi phạm quy trình.\n\nKhông báo cáo sự cố hoặc tự ý xử lý sẽ bị xem là vi phạm nghiêm trọng quy chế bảo mật và có thể bị kỷ luật theo mức cảnh cáo hoặc sa thải."
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu hướng dẫn về quy định thử việc, nói về chế độ phúc lợi và quy trình đánh giá trong thời gian thử việc.\n\nNhân viên thử việc được tham gia bảo hiểm xã hội bắt buộc nhưng chưa được hưởng gói bảo hiểm sức khỏe PVI. ## Đánh giá thử việc Quản lý trực tiếp thực hiện đánh giá vào ngày thứ 30 (giữa kỳ) và ngày thứ 55 (cuối kỳ).",
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách bảo hiểm sức khỏe, giới thiệu về quyền lợi bảo hiểm dành cho nhân viên chính thức.\n\n# Chính sách bảo hiểm sức khỏe > Phiên bản: 1.5 | Ngày hiệu lực: 01/04/2024 | Phòng ban: Nhân sự ## Bảo hiểm cho nhân viên Công ty cung cấp gói bảo hiểm sức khỏe toàn diện qua **PVI Insurance** cho tất cả nhân viên chính thức.",
+      "Đoạn văn nằm trong tài liệu bảo hiểm sức khỏe, mô tả tỷ lệ đóng góp chi phí gói gia đình và quy trình sử dụng bảo hiểm.\n\nChi phí gói gia đình: công ty hỗ trợ 50%, nhân viên đóng 50% qua khấu trừ lương hàng tháng. ## Quy trình sử dụng Nhân viên xuất trình thẻ bảo hiểm PVI tại các bệnh viện/phòng khám trong danh sách liên kết."
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2024, đề cập đến hướng dẫn và quy trình xin nghỉ phép của nhân viên.\n\nVí dụ: nhân viên 9 năm thâm niên được 18 ngày phép (15 + 3). ## Quy định sử dụng Phép năm phải được đăng ký trước ít nhất 2 ngày làm việc qua hệ thống HR Portal. Nghỉ phép từ 5 ngày trở lên cần được trưởng phòng phê duyệt.",
+      "Đoạn văn nằm trong phần quy định về phép năm của tài liệu nhân sự, nói về chính sách cộng thêm ngày phép theo thâm niên.\n\nNhân viên có thâm niên từ **5 năm trở lên** được cộng thêm **1 ngày phép** cho mỗi 5 năm làm việc liên tục. Ví dụ: nhân viên 10 năm thâm niên được 14 ngày phép. ## Quy định sử dụng",
+      "Đoạn văn nằm trong tài liệu hướng dẫn về nghỉ phép không lương, đề cập đến thời gian tối đa, chế độ thâm niên và quy trình nộp đơn xin nghỉ.\n\nThời gian nghỉ phép không lương tối đa là **30 ngày** trong một năm dương lịch. Nghỉ phép không lương không được tính thâm niên. ## Quy trình phê duyệt Đơn xin nghỉ phép không lương phải được nộp trước ít nhất 7 ngày làm việc."
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu mua sắm, đề cập đến quy trình và quy định mua sắm thiết bị CNTT và các trường hợp khẩn cấp.\n\nMua sắm thiết bị CNTT (laptop, server, phần mềm) cần có xác nhận của phòng CNTT về cấu hình kỹ thuật trước khi đề xuất. Đơn hàng khẩn cấp có thể bỏ qua yêu cầu 3 báo giá nhưng phải có giải trình bằng văn bản.",
+      "Đoạn văn nằm trong tài liệu hướng dẫn về quy trình tạm ứng, đề cập đến điều kiện và thẩm quyền phê duyệt tạm ứng.\n\nNhân viên có khoản tạm ứng chưa thanh toán sẽ không được phê duyệt tạm ứng mới. ## Phê duyệt Tạm ứng dưới 5.000.000 VNĐ: trưởng phòng phê duyệt. Từ 5.000.000 VNĐ trở lên: cần thêm phê duyệt Kế toán trưởng.",
+      "Đoạn văn nằm ở phần đầu của tài liệu Quy trình mua sắm, thuộc mục thẩm quyền phê duyệt do phòng Hành chính & Tài chính ban hành.\n\n# Quy trình mua sắm > Phiên bản: 2.2 | Ngày hiệu lực: 01/04/2024 | Phòng ban: Hành chính & Tài chính ## Thẩm quyền phê duyệt | Giá trị đơn hàng | Người phê duyệt | |-------------------|-----------------| | Dưới **5.000.000 VNĐ** | Trưởng phòng (Manager) |"
+    ],
+    [
+      "Đoạn văn nằm ở phần quy định về đào tạo của tài liệu và nói về cam kết thời gian làm việc sau khi nhận tài trợ.\n\nNhân viên được tài trợ đào tạo phải **cam kết làm việc tại công ty ít nhất 1 năm** sau khi hoàn thành khóa học. Nếu nghỉ việc trước thời hạn cam kết, nhân viên phải hoàn trả **100% chi phí** đào tạo đã được tài trợ. ## Quy trình 1.",
+      "Đoạn văn nằm trong tài liệu hướng dẫn về chính sách đào tạo, trình bày về điều kiện và mức hỗ trợ tài chính cho nhân viên tham gia các khóa học bên ngoài.\n\nCông ty chi trả chi phí đào tạo bên ngoài (chứng chỉ, khóa học dài hạn, hội thảo) cho nhân viên có **thâm niên từ 1 năm trở lên**. Chi phí được tài trợ tối đa **30.000.000 VNĐ/khóa** và cần phê duyệt của Giám đốc phòng ban. ## Cam kết hoàn chi",
+      "Đoạn văn nằm trong tài liệu hướng dẫn về quy trình đào tạo, mô tả các bước thủ tục cần thiết để nhân viên được phê duyệt và hoàn chi phí tham gia khóa học.\n\nNộp đơn đề xuất đào tạo kèm chương trình chi tiết 2. Trưởng phòng đánh giá mức độ liên quan đến công việc 3. Phòng Nhân sự xem xét ngân sách 4. Ký cam kết hoàn chi trước khi đăng ký khóa học"
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu hướng dẫn mentor_buddy.md, nói về các quy tắc phân công và tiêu chí lựa chọn Buddy và Mentor cho nhân viên mới.\n\nBuddy là nhân viên cùng phòng ban, thâm niên từ 6 tháng. ## Quy tắc quan trọng Mentor và Buddy phải là **hai người khác nhau** để đảm bảo nhân viên mới có nhiều nguồn hỗ trợ đa dạng. Quản lý trực tiếp không được làm Mentor hoặc Buddy.",
+      "Đoạn văn nằm trong tài liệu hướng dẫn về mentor và buddy, nói về tiêu chuẩn của mentor và vai trò hỗ trợ hòa nhập của buddy.\n\nMentor phải là nhân viên cấp Senior trở lên, khác phòng ban hoặc cùng phòng ban nhưng không phải quản lý trực tiếp. - **Buddy**: hỗ trợ **văn hóa và hòa nhập**, giúp nhân viên mới làm quen môi trường, giới thiệu đồng nghiệp, hướng dẫn quy trình hàng ngày.",
+      "Đoạn văn nằm trong tài liệu hướng dẫn mentor_buddy.md, nói về thời gian hỗ trợ của chương trình Buddy và Mentor.\n\n## Thời gian chương trình Buddy hỗ trợ trong 3 tháng đầu. Mentor đồng hành trong 6 tháng đầu. Sau đó, nhân viên có thể tự chọn mentor dài hạn thông qua chương trình Mentor tự nguyện."
+    ],
+    [
+      "Đoạn văn nằm trong phần quy định về hạn mức phê duyệt tài chính và quy trình mua sắm của tài liệu.\n\n| Từ **5.000.000 - 50.000.000 VNĐ** | Giám đốc phòng ban (Director) | | Trên **50.000.000 VNĐ** | Tổng Giám đốc (CEO) | ## Quy trình đề xuất 1. Tạo phiếu đề xuất mua sắm trên hệ thống Procurement Portal 2.",
+      "Đoạn văn nằm ở phần đầu của tài liệu Quy trình mua sắm, thuộc mục thẩm quyền phê duyệt do phòng Hành chính & Tài chính ban hành.\n\n# Quy trình mua sắm > Phiên bản: 2.2 | Ngày hiệu lực: 01/04/2024 | Phòng ban: Hành chính & Tài chính ## Thẩm quyền phê duyệt | Giá trị đơn hàng | Người phê duyệt | |-------------------|-----------------| | Dưới **5.000.000 VNĐ** | Trưởng phòng (Manager) |",
+      "Đoạn văn nằm trong tài liệu mua sắm, đề cập đến quy trình và quy định mua sắm thiết bị CNTT và các trường hợp khẩn cấp.\n\nMua sắm thiết bị CNTT (laptop, server, phần mềm) cần có xác nhận của phòng CNTT về cấu hình kỹ thuật trước khi đề xuất. Đơn hàng khẩn cấp có thể bỏ qua yêu cầu 3 báo giá nhưng phải có giải trình bằng văn bản."
+    ],
+    [
+      "Đoạn văn nằm trong phần quy định về tạm ứng và phạt quá hạn của tài liệu, tập trung thảo luận về chính sách tài chính liên quan đến việc hoàn ứng công tác.\n\nTrường hợp công tác dài ngày, thời hạn tính từ ngày kết thúc chuyến công tác. ## Phạt quá hạn Khoản tạm ứng chưa thanh toán sau 15 ngày sẽ bị tính phí **2%/tháng** trên số tiền chưa hoàn ứng. Phí này được khấu trừ vào lương tháng kế tiếp.",
+      "Đoạn văn nằm trong tài liệu hướng dẫn về quy trình tạm ứng, đề cập đến điều kiện và thẩm quyền phê duyệt tạm ứng.\n\nNhân viên có khoản tạm ứng chưa thanh toán sẽ không được phê duyệt tạm ứng mới. ## Phê duyệt Tạm ứng dưới 5.000.000 VNĐ: trưởng phòng phê duyệt. Từ 5.000.000 VNĐ trở lên: cần thêm phê duyệt Kế toán trưởng.",
+      "Đoạn văn nằm trong phần quy định về tạm ứng của tài liệu, tập trung vào mục đích sử dụng và thời hạn thanh toán khoản tạm ứng.\n\nTạm ứng phải ghi rõ mục đích: công tác, mua sắm, tổ chức sự kiện hoặc chi phí dự án. ## Thời hạn thanh toán Khoản tạm ứng phải được thanh toán (nộp chứng từ hoàn ứng) trong vòng **15 ngày** kể từ ngày nhận tiền."
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu bảng lương năm 2024, thuộc phần quy định chi tiết về mức lương theo cấp bậc và chế độ lương thử việc.\n\n| Senior (P3-P4) | 20.000.000 - 35.000.000 | | Lead (P5) | 35.000.000 - 50.000.000 | | Manager (M1-M2) | 45.000.000 - 70.000.000 | ## Lương thử việc Nhân viên trong thời gian thử việc được nhận **85% lương** của cấp bậc tương ứng.",
+      "Đoạn văn nằm trong tài liệu quy định về thử việc, nói về thời gian thử việc cho cấp quản lý và mức lương thử việc.\n\nĐối với vị trí quản lý cấp cao (Manager trở lên), thời gian thử việc có thể kéo dài đến 90 ngày. ## Lương thử việc Nhân viên thử việc được nhận **85% mức lương** của cấp bậc tương ứng theo bảng lương công ty.",
+      "Đoạn văn nằm ở phần đầu của tài liệu bảng lương năm 2024, nói về khung lương theo cấp bậc cho nhân sự.\n\n# Bảng lương năm 2024 > Phiên bản: 3.0 | Ngày hiệu lực: 01/01/2024 | Phòng ban: Nhân sự & Tài chính ## Khung lương theo cấp bậc | Cấp bậc | Lương gross (VNĐ/tháng) | |----------|--------------------------| | Junior (P1-P2) | 12.000.000 - 20.000.000 |"
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu hướng dẫn về kỳ lương, thảo luận về quy trình nhận phiếu lương, giải đáp thắc mắc và tính bảo mật thông tin lương.\n\nPhiếu lương điện tử được gửi qua email công ty vào ngày chi trả. Thắc mắc về lương liên hệ phòng Tài chính trong vòng 5 ngày làm việc. Thông tin lương là dữ liệu **Bí mật**, cấm chia sẻ với đồng nghiệp.",
+      "Đoạn văn nằm ở phần đầu của tài liệu chính sách phân loại dữ liệu, giới thiệu về cấp độ phân loại dữ liệu thứ nhất.\n\n# Chính sách phân loại dữ liệu > Phiên bản: 1.0 | Ngày hiệu lực: 01/06/2024 | Phòng ban: CNTT & An ninh thông tin ## Bốn cấp độ phân loại | Cấp độ | Nhãn | Ví dụ | |--------|------|-------| | 1 | **Công khai** | Thông tin marketing, bài blog, tuyển dụng |",
+      "Đoạn văn nằm trong tài liệu phân loại dữ liệu, nói về các mức độ phân loại và quy định xử lý thông tin.\n\n- **Công khai**: chia sẻ tự do, không hạn chế - **Nội bộ**: chỉ chia sẻ nội bộ, không ra ngoài công ty - **Bí mật**: mã hóa khi truyền, hạn chế quyền truy cập theo need-to-know"
+    ],
+    [
+      "Đoạn văn nằm trong tài liệu quy định về nghỉ không lương, nói về quy trình và thẩm quyền phê duyệt các mức thời gian nghỉ khác nhau.\n\nNghỉ từ 1-5 ngày: trưởng phòng phê duyệt. Nghỉ từ 6-15 ngày: cần thêm phê duyệt của Giám đốc Nhân sự. Nghỉ từ 16-30 ngày: cần phê duyệt của **Giám đốc điều hành (CEO)**. ## Ảnh hưởng đến phúc lợi",
+      "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2023, thảo luận về quy trình đăng ký nghỉ phép và chính sách chuyển phép sang năm sau.\n\nPhép năm phải được đăng ký trước ít nhất 3 ngày làm việc qua hệ thống HR Portal. Nghỉ phép từ 3 ngày trở lên cần được trưởng phòng phê duyệt. Phép năm không sử dụng hết có thể chuyển tối đa 5 ngày sang năm sau, hết hạn vào 31/03 năm kế tiếp.",
+      "Đoạn văn nằm trong tài liệu quy định về phép năm phiên bản 2024, đề cập đến hướng dẫn và quy trình xin nghỉ phép của nhân viên.\n\nVí dụ: nhân viên 9 năm thâm niên được 18 ngày phép (15 + 3). ## Quy định sử dụng Phép năm phải được đăng ký trước ít nhất 2 ngày làm việc qua hệ thống HR Portal. Nghỉ phép từ 5 ngày trở lên cần được trưởng phòng phê duyệt."
+    ]
+  ],
+  "ground_truths": [
+    "Nhân viên được nghỉ 3 ngày làm việc có lương khi kết hôn, không trừ vào phép năm.",
+    "Hạn mức bảo hiểm sức khỏe PVI cho nhân viên là 200.000.000 VNĐ/năm, bao gồm nội trú, ngoại trú và nha khoa.",
+    "Phụ cấp ăn trưa là 1.000.000 VNĐ/tháng, chi trả cùng kỳ lương.",
+    "Theo chính sách hiện hành (v2024), nhân viên được nghỉ 15 ngày phép năm có lương. Chính sách cũ (v2023) là 12 ngày nhưng đã bị thay thế.",
+    "Theo chính sách v2024 hiện hành, nhân viên có thâm niên từ 3 năm trở lên được cộng thêm 1 ngày phép cho mỗi 3 năm. Chính sách cũ v2023 yêu cầu 5 năm.",
+    "Theo chính sách hiện hành (v2.0), mật khẩu phải có tối thiểu 12 ký tự. Chính sách cũ (v1.0) yêu cầu 8 ký tự nhưng đã bị thay thế.",
+    "Theo chính sách hiện hành (v2.0), mật khẩu phải được thay đổi mỗi 120 ngày. Chính sách cũ yêu cầu 90 ngày nhưng đã bị thay thế.",
+    "Có, theo chính sách mật khẩu v2.0 hiện hành, tất cả nhân viên bắt buộc kích hoạt MFA cho email, VPN và hệ thống nội bộ. Chính sách cũ v1.0 không yêu cầu MFA.",
+    "KHÔNG. Nhân viên thử việc KHÔNG được nghỉ phép năm. Nếu cần nghỉ, phải xin nghỉ không lương và được trưởng phòng phê duyệt.",
+    "KHÔNG. Nhân viên tuyệt đối không được tự ý xử lý malware. Phải báo cáo trong vòng 1 giờ qua helpdesk@cty.vn hoặc hotline CNTT. Tự ý xử lý bị coi là vi phạm nghiêm trọng.",
+    "KHÔNG. Nhân viên thử việc chưa được hưởng gói bảo hiểm sức khỏe PVI. Chỉ được tham gia bảo hiểm xã hội bắt buộc.",
+    "Theo chính sách v2024: 15 ngày cơ bản + 3 ngày thâm niên (9÷3=3) = 18 ngày phép. Lương Senior (P3-P4): 20-35 triệu VNĐ/tháng.",
+    "Laptop 30 triệu nằm trong khoảng 5-50 triệu nên cần Giám đốc phòng ban (Director) phê duyệt. Ngoài ra, mua sắm thiết bị CNTT cần có xác nhận cấu hình kỹ thuật từ phòng CNTT trước khi đề xuất. Cần đính kèm ít nhất 3 báo giá vì trên 10 triệu.",
+    "Nhân viên phải cam kết làm việc ít nhất 1 năm sau khi hoàn thành khóa học. Nghỉ sau 8 tháng là trước hạn cam kết, phải hoàn trả 100% chi phí tức 25.000.000 VNĐ.",
+    "KHÔNG cho cả hai. Mentor và buddy phải là hai người khác nhau. Quản lý trực tiếp không được làm mentor hoặc buddy.",
+    "Đơn hàng trên 50.000.000 VNĐ cần Tổng Giám đốc (CEO) phê duyệt.",
+    "Thời hạn thanh toán là 15 ngày. Quá hạn 5 ngày, bị tính phí 2%/tháng trên 15.000.000 VNĐ = 300.000 VNĐ/tháng (tính pro-rata khoảng 50.000 VNĐ cho 5 ngày).",
+    "Junior cao nhất là 20.000.000 VNĐ/tháng. Lương thử việc = 85% x 20.000.000 = 17.000.000 VNĐ/tháng.",
+    "Theo quy chế chi trả lương, thông tin lương được phân loại là dữ liệu Bí mật, cấm chia sẻ với đồng nghiệp. Theo chính sách phân loại dữ liệu, dữ liệu Bí mật (cấp 3) phải mã hóa khi truyền và hạn chế truy cập theo need-to-know.",
+    "Nghỉ 16-30 ngày cần phê duyệt của Giám đốc điều hành (CEO). Lưu ý: nghỉ trên 14 ngày không lương, nhân viên phải tự đóng phần bảo hiểm của mình."
+  ]
+}

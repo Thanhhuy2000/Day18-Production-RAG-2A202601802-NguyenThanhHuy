@@ -5,4 +5,7 @@ __pycache__/
 .pytest_cache/
 qdrant_data/
 *.egg-info/
-reports/*.json
+.enrich_cache.json
+run_main.log
+.venv/
+*.log

@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from src.m1_chunking import load_documents, chunk_basic
 from src.m2_search import DenseSearch
 from src.m4_eval import load_test_set, evaluate_ragas, save_report
+from src.llm import answer_from_context, provider
 from config import NAIVE_COLLECTION
 
 
@@ -34,34 +35,28 @@ def main():
     test_set = load_test_set()
     questions, answers, all_contexts, ground_truths = [], [], [], []
 
-    from config import OPENAI_API_KEY
-    llm_client = None
-    if OPENAI_API_KEY:
-        from openai import OpenAI
-        llm_client = OpenAI()
+    print(f"  LLM provider: {provider()}")
 
+    # Pha 1: retrieve toàn bộ query (bge-m3 đang trong RAM)
+    retrieved_contexts = []
     for i, item in enumerate(test_set):
         results = search.search(item["question"], top_k=3, collection=NAIVE_COLLECTION)
-        contexts = [r.text for r in results]
+        retrieved_contexts.append([r.text for r in results])
+        print(f"  [{i+1}/{len(test_set)}] retrieved: {item['question'][:45]}...", flush=True)
 
-        if llm_client and contexts:
-            try:
-                context_str = "\n\n".join(contexts)
-                resp = llm_client.chat.completions.create(model="gpt-4o-mini", messages=[
-                    {"role": "system", "content": "Trả lời CHỈ dựa trên context. Nếu không có → nói 'Không tìm thấy.'"},
-                    {"role": "user", "content": f"Context:\n{context_str}\n\nCâu hỏi: {item['question']}"},
-                ])
-                answer = resp.choices[0].message.content
-            except Exception:
-                answer = contexts[0]
-        else:
-            answer = contexts[0] if contexts else "Không tìm thấy."
+    # Giải phóng bge-m3 trước khi gọi LLM/RAGAS (máy lab chỉ còn ~2GB RAM trống)
+    search.unload()
+
+    # Pha 2: sinh câu trả lời từ context
+    for i, item in enumerate(test_set):
+        contexts = retrieved_contexts[i]
+        answer = answer_from_context(item["question"], contexts)
 
         answers.append(answer)
         questions.append(item["question"])
-        all_contexts.append(contexts)
+        all_contexts.append(contexts if contexts else ["Không có context."])
         ground_truths.append(item["ground_truth"])
-        print(f"  [{i+1}/{len(test_set)}] {item['question'][:50]}...", flush=True)
+        print(f"  [{i+1}/{len(test_set)}] answered: {item['question'][:45]}...", flush=True)
 
     results = evaluate_ragas(questions, answers, all_contexts, ground_truths)
     print("\nBASIC BASELINE SCORES")

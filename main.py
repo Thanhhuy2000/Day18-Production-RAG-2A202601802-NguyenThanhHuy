@@ -9,7 +9,28 @@ Usage:
 
 import json
 import os
+import subprocess
+import sys
 import time
+
+# Windows console mặc định cp1252 -> in tiếng Việt/emoji sẽ crash UnicodeEncodeError
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+
+def _run_step(script: str) -> None:
+    """Chạy 1 bước trong process riêng.
+
+    Baseline và production pipeline mỗi bên đều load bge-m3 (~1.5GB). Chạy chung
+    1 process trên máy 8GB làm quá trình encode chết giữa chừng
+    (Windows fatal exception: access violation). Process riêng → RAM được trả về OS
+    hoàn toàn sau mỗi bước.
+    """
+    env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+    result = subprocess.run([sys.executable, script], env=env)
+    if result.returncode != 0:
+        raise SystemExit(f"❌ {script} thất bại (exit code {result.returncode})")
 
 
 def main():
@@ -23,18 +44,15 @@ def main():
     # Step 1: Basic Baseline
     print("\n📌 STEP 1: Running Basic RAG Baseline...")
     print("-" * 40)
-    from naive_baseline import main as run_baseline
-    run_baseline()
+    _run_step("naive_baseline.py")
 
     # Step 2: Production Pipeline
     print("\n📌 STEP 2: Running Production Pipeline...")
     print("-" * 40)
-    from src.pipeline import build_pipeline, evaluate_pipeline
-    search, reranker = build_pipeline()
-    prod_results = evaluate_pipeline(search, reranker)
+    _run_step(os.path.join("src", "pipeline.py"))
 
     # Move reports to reports/
-    for f in ["ragas_report.json", "naive_baseline_report.json"]:
+    for f in ["ragas_report.json", "naive_baseline_report.json", "latency_report.json"]:
         if os.path.exists(f):
             os.rename(f, f"reports/{f}")
 
